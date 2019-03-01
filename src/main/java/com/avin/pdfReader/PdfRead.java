@@ -36,19 +36,16 @@ public class PdfRead {
 					heading = rec.split(" ");
 				}
 			}
-			for (String item : heading) {
-				colCount++;
-			}
-			for (int i = 0; i < records.length; i++) {
-				String n = records[i];
+			colCount = heading.length;
+			for (int index = 0; index < records.length; index++) {
+				String n = records[index];
 				n = StringUtils.stripEnd(n, " ");
-				if (i == 0) {
+				if (index == 0) {
 					heading = n.split(" ");
 				}
 
 				else {
 					String val[] = n.split(" ");
-					// Write the method here to insert to DB
 					PdfRead pdf = new PdfRead();
 					JSONObject jObj = pdf.createJSON(colCount, heading, val);
 					String jsonText = jObj.toString();
